@@ -1,0 +1,34 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-std=c++11",
+      "-I./include",
+      "-I/opt/homebrew/Cellar/glfw/3.4/include",
+      "-c",
+      "-o",
+      "src/main.o",
+      "src/main.cpp"
+    ],
+    "directory": "/Users/hpham/Projects/playground/opengl-starter",
+    "file": "/Users/hpham/Projects/playground/opengl-starter/src/main.cpp",
+    "output": "/Users/hpham/Projects/playground/opengl-starter/src/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-std=c++11",
+      "-I./include",
+      "-I/opt/homebrew/Cellar/glfw/3.4/include",
+      "-c",
+      "-o",
+      "src/glad.o",
+      "src/glad.c"
+    ],
+    "directory": "/Users/hpham/Projects/playground/opengl-starter",
+    "file": "/Users/hpham/Projects/playground/opengl-starter/src/glad.c",
+    "output": "/Users/hpham/Projects/playground/opengl-starter/src/glad.o"
+  }
+]

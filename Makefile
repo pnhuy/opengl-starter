@@ -20,4 +20,4 @@ glad.o: src/glad.c
 	$(CC) $(CFLAGS) -c src/glad.c -o src/glad.o
 
 clean:
-	rm -f $(OBJECTS) $(EXEC)
+	rm -f src/glad.o $(OBJECTS) $(EXEC)
