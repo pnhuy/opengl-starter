@@ -1,6 +1,13 @@
+PLATFORM = $(shell uname)
 CC = g++
 CFLAGS = -Wall -std=c++11 -I./include $(shell pkg-config --cflags glfw3)
-LIBS = -framework OpenGL -framework GLUT $(shell pkg-config --libs glfw3)
+
+# Setting LIBS for different platforms
+ifeq ($(PLATFORM),Darwin)
+	LIBS = -framework OpenGL -framework GLUT $(shell pkg-config --libs glfw3)
+else
+	LIBS = $(shell pkg-config --libs glfw3)
+endif
 
 SOURCES = $(wildcard src/*.cpp)
 OBJECTS = $(patsubst %.cpp,%.o,$(SOURCES))
