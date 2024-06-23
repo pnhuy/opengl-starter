@@ -9,22 +9,24 @@ else
 	LIBS = $(shell pkg-config --libs glfw3)
 endif
 
-SOURCES = $(wildcard src/*.cpp)
-OBJECTS = $(patsubst %.cpp,%.o,$(SOURCES))
-
+C_SOURCES = $(wildcard src/*.c) $(wildcard src/**/*.c)
+CPP_SOURCES = $(wildcard src/*.cpp) $(wildcard src/**/*.cpp)
+OBJECTS = $(C_SOURCES:.c=.o) $(CPP_SOURCES:.cpp=.o)
 EXEC = main
 
 all: $(EXEC)
 
-$(EXEC): $(OBJECTS) glad.o
-	$(CC) $(CFLAGS) -o $@ $(OBJECTS) src/glad.o $(LIBS)
+$(EXEC): $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LIBS)
 
 # Compile the source files
-%.o: %.cpp
+.cpp.o: $(CPP_SOURCES)
+	echo $(CPP_SOURCES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-glad.o: src/glad.c
-	$(CC) $(CFLAGS) -c src/glad.c -o src/glad.o
+.c.o: $(C_SOURCES)
+	echo $(C_SOURCES)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f src/glad.o $(OBJECTS) $(EXEC)
+	rm -f src/glad.o $(OBJECTS) $(SB7_OBJ) $(EXEC)
